@@ -1,22 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import {
+	Document,
+	Page,
+  Text
+} from "@react-pdf/renderer";
+
+const getPDF = () => {
+  return (
+    <Document>
+      <Page orientation="landscape">
+        <Text fill="black">
+          This is a test
+        </Text>
+      </Page>
+    </Document>
+  );
+}
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <PDFDownloadLink
+          document={getPDF()}>
+          Generate PDF
+        </PDFDownloadLink>
       </header>
     </div>
   );
